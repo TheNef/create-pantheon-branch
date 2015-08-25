@@ -54,28 +54,10 @@ before_install:
 
 
 install:
-    - bash scripts/install.sh
+    - curl https://github.com/pantheon-systems/cli/releases/download/0.7.0/terminus.phar -L -o /usr/local/bin/terminus && chmod +x /usr/local/bin/terminus
 
 before_script:
-    # Authenticate with Pantheon via Terminus.
-    - drush pauth $PEMAIL --password=$PPASS
-
-    # Generate a random branch / multidev name, prefixed with "ci" followed
-    # by the Travis build number. Note, due to Pantheon multidev environment
-    # name limits, builds will start failing at #100000.
-
-    - PSITE=$(cat /dev/urandom | tr -cd 'a-z0-9' | head -c 4)
-    - PSITE="ci$TRAVIS_BUILD_NUMBER-$PSITE"
-
-    # You can use $PHOST as a reference to the resulting multidev hostname.
-    - PHOST="https://$PSITE-$PNAME.gotpantheon.com"
-
-  # Create a new Pantheon environment using the above branch.
-    - drush psite-ecreate $PUUID $PSITE --source=$PSOURCE || true
-
-  # Update our drush aliases file.
-    - drush paliases
-    - drush cc drush
+    - terminus auth login $PEMAIL --password=$PPASS
 
 script:
   # bash scripts/run_tests.sh
