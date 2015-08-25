@@ -72,7 +72,7 @@ script:
 
     # You can use $PHOST as a reference to the resulting multidev hostname.
     - PHOST="https://$PSITE-$PNAME.gotpantheon.com"
-    - sudo terminus site create-env --site=PSITE --env=$PENV --from-env=$PENV
+    - sudo terminus site create-env --site=$PNAME --env=$PSITE --from-env=$PENV
 
 after_script:
   # General-purpose clean-up could go here.
