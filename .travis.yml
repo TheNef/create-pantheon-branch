@@ -54,6 +54,11 @@ before_install:
 
 
 install:
+    - echo "StrictHostKeyChecking no" > ~/.ssh/config
+
+    # Install Drush and Behat
+    - composer install
+    - export PATH="$HOME/.composer/vendor/bin:$PATH"
     - sudo curl https://github.com/pantheon-systems/cli/releases/download/0.7.0/terminus.phar -L -o /usr/local/bin/terminus 
     - sudo chmod +x /usr/local/bin/terminus
 
@@ -72,8 +77,9 @@ script:
 
     # You can use $PHOST as a reference to the resulting multidev hostname.
     - PHOST="https://$PSITE-$PNAME.gotpantheon.com"
-    - sudo terminus site create-env --site=$PNAME --env=$PSITE --from-env=$PENV
-
+    # sudo terminus site create-env --site=$PNAME --env=$PSITE --from-env=$PENV
+    - PHOST_2='http://ci15-u4zo-travis-test.pantheon.io'
+    - bash scripts/run_tests.sh
 after_script:
   # General-purpose clean-up could go here.
 
