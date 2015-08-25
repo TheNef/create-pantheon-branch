@@ -12,5 +12,6 @@ export PATH="$TRAVIS_BUILD_DIR/vendor/bin:$PATH"
 #drush @pantheon.$PNAME.$PENV si --account-pass=$RANDPASS --site-name="Travis Did It" -y
 
 # Run the barebones behat test
+echo $PHOST_2
 export BEHAT_PARAMS="extensions[Behat\MinkExtension\Extension][base_url]=$PHOST_2"
 behat
