@@ -58,6 +58,7 @@ install:
     - sudo chmod +x /usr/local/bin/terminus
 
 before_script:
+    - terminus cli version
     - terminus auth login $PEMAIL --password=$PPASS
 
 script:
