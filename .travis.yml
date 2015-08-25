@@ -80,7 +80,7 @@ script:
     # sudo terminus site create-env --site=$PNAME --env=$PSITE --from-env=$PENV
     - PHOST_2='http://ci15-u4zo-travis-test.pantheon.io'
     - echo $PHOST_2
-    - export BEHAT_PARAMS="extensions[Behat\MinkExtension\Extension][base_url]=$PHOST_2"
+    - export BEHAT_PARAMS='extensions[Behat\MinkExtension\Extension][base_url]=$PHOST_2'
     - bash scripts/run_tests.sh
     
 after_script:
