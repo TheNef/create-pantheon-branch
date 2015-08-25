@@ -77,11 +77,10 @@ script:
 
     # You can use $PHOST as a reference to the resulting multidev hostname.
     - PHOST="https://$PSITE-$PNAME.gotpantheon.com"
-    # sudo terminus site create-env --site=$PNAME --env=$PSITE --from-env=$PENV
-    - PHOST_2='http://ci15-u4zo-travis-test.pantheon.io'
-    - PHOST_2="extensions[Behat\MinkExtension\Extension][base_url]=$PHOST_2"
-    - echo $PHOST_2
-    - export BEHAT_PARAMS=$PHOST_2
+    - #sudo terminus site create-env --site=$PNAME --env=$PSITE --from-env=$PENV
+    - BEHAT_BASE_URL="extensions[Behat\MinkExtension\Extension][base_url]=$PHOST"
+    - echo $BEHAT_BASE_URL
+    - export BEHAT_PARAMS=$BEHAT_BASE_URL
     - bash scripts/run_tests.sh
     
 after_script:
