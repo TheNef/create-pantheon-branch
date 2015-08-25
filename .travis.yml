@@ -81,7 +81,7 @@ script:
     - PHOST_2='http://ci15-u4zo-travis-test.pantheon.io'
     - PHOST_2="'extensions[Behat\MinkExtension\Extension][base_url]=$PHOST_2'"
     - echo $PHOST_2
-    - export BEHAT_PARAMS=PHOST_2
+    - export BEHAT_PARAMS=$PHOST_2
     - bash scripts/run_tests.sh
     
 after_script:
