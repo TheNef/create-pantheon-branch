@@ -59,7 +59,7 @@ install:
 
 before_script:
     - sudo terminus cli version
-    - terminus auth login $PEMAIL --password=$PPASS
+    - sudo terminus auth login $PEMAIL --password=$PPASS
 
 script:
   # bash scripts/run_tests.sh
