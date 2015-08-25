@@ -2,5 +2,4 @@
 default:
     extensions:
         Behat\MinkExtension\Extension:
-            base_url: http://ci15-u4zo-travis-test.pantheon.io
             goutte: ~

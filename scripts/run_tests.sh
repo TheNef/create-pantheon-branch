@@ -12,4 +12,5 @@ export PATH="$TRAVIS_BUILD_DIR/vendor/bin:$PATH"
 #drush @pantheon.$PNAME.$PENV si --account-pass=$RANDPASS --site-name="Travis Did It" -y
 
 # Run the barebones behat test
+export BEHAT_PARAMS="context[parameters][base_url]=http://ci15-u4zo-travis-test.pantheon.io"
 behat
